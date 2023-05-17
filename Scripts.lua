@@ -43,16 +43,6 @@ local ss = BuildingTool,DeleteTool,PaintingTool,BindTool,PropertiesTool,ScalingT
 
 local Group = game:GetService("Players").LocalPlayer.GroupRoll.Value
 
-if game.VIPServerOwnerId ~= 0 then
-	local VIP = print("VIP server")
-elseif game.VIPServerId ~= "" then
-	local RES = print("Reserved server")
-else
-	local PUB = print("Public server") -- "public" includes "Friend only" places
-end
-
-local GGSA = VIP,RES,PUB
-
 local PlayerData =
 {
        ["username"] = "Check Build A Boat For Treasure Item.",
