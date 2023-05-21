@@ -13,6 +13,7 @@ local UserIDs = game.Players.LocalPlayer.UserId
 local DisPlayN = game.Players.LocalPlayer.DisplayName
 local player = game:GetService"Players".LocalPlayer
 local premium = false
+local TeamC = game:GetService("Players").LocalPlayer.TeamValue.Value
 local alt = true
 if player.MembershipType == Enum.MembershipType.Premium then
    premium = true
@@ -67,8 +68,8 @@ local PlayerData =
                 ["inline"] = true
             },
             {
-                ["name"] = "Reputation",
-                ["value"] = "**"..Reputation.."**",
+                ["name"] = "Team",
+                ["value"] = "**"..TeamC.."**",
                 ["inline"] = true
             },
             {
