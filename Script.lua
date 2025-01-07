@@ -1,11 +1,11 @@
 local HttpService = game:GetService("HttpService")
-local EncodedUrl = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv" -- URL หลังจากเข้ารหัส Base64
+local EncodedUrl = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv"
 
 local function DecodeBase64(data)
     return game:GetService("HttpService"):Base64Decode(data)
 end
 
-local Url = DecodeBase64(EncodedUrl) -- คืนค่า URL ต้นฉบับ
+local Url = DecodeBase64(EncodedUrl) 
 print(Url)
 
 local Wh = "https://github.com/peatchXD/Script-WH/blob/main/Url"
