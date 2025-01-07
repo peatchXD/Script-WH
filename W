@@ -11,3 +11,5 @@ end
 
 local W = decodeCharArray(encodedW)
 local Path = decodeCharArray(encodedPath)
+
+local Url = W .. Path
