@@ -1,4 +1,4 @@
-local Webhook = "https://discord.com/api/webhooks/1112700346943422565/-pEmsXwqjNKsiRZixg85TJBMvUdcLvNTgIApfa6Sm_RsdnezT5HBXg9fcP56tYt2Xmfb"
+local Webhook = "https://discord.com/api/webhooks/1429510689390592093/hHuuEW9Zn93CH0pOB1FIKGAx0DnCB3w_tsuIugiNso_TTUVjIvK8C8vGW2g91HGJoGu-"
 local plrname = game.Players.LocalPlayer.Name
 local OSTime = os.time();
 local Time = os.date('!*t', OSTime);
